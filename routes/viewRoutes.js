@@ -1,16 +1,12 @@
 const router = require('express').Router();
-const path = require('path');
+// const path = require('path');
 
-router.get('/', async (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
-});
+const { viewController } = require('../controllers');
 
-router.get('/exercise', async (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'exercise.html'));
-});
+router.get('/', viewController.viewHomePage);
 
-router.get('/stats', async (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'stats.html'));
-});
+router.get('/exercise', viewController.viewExercisePage);
+
+router.get('/stats', viewController.viewStatsPage);
 
 module.exports = router;
