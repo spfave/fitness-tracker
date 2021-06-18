@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const { apiWorkoutController } = require('../controllers');
 
-// GET last workout
-router.get('/', 1);
+// GET all workouts
+router.get('/', apiWorkoutController.getWorkouts);
 
-// PUT workout
-router.put('/', 2);
+// PUT exercise in workout
+router.put('/', apiWorkoutController.addWorkoutExercise);
 
 // POST workout
-router.post('/', 3);
+router.post('/', apiWorkoutController.addWorkout);
 
 // Get workouts in range
-router.get('/range', 4);
+router.get('/range', apiWorkoutController.getRangeWorkouts);
 
 module.exports = router;
