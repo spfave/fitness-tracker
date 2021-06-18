@@ -15,17 +15,18 @@ const app = express();
 // Set public folder path
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware - logger
 app.use(logger('dev'));
 
 // Data parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Rountes
+// Routes
 app.use(routes);
 
 // Database connection
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/populate', {
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workoutDB', {
 //   useNewUrlParser: true,
 // });
 
