@@ -1,4 +1,4 @@
-const path = require('path');
+const { Exercise, Workout } = require('../models');
 
 // Return list of workouts
 function getWorkouts(req, res) {
