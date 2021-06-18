@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { workoutController } = require('../controllers');
+const { apiWorkoutController } = require('../controllers');
 
 // GET last workout
 router.get('/', 1);
