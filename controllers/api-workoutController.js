@@ -27,8 +27,16 @@ async function addWorkout(req, res) {
 }
 
 // Add exercise to workout
-function addWorkoutExercise(req, res) {
-  res.json(1);
+async function addWorkoutExercise(req, res) {
+  try {
+    const workoutUpdated = await Workout.updateOne(
+      { _id: req.params.id },
+      { $push: { exercises: req.body } }
+    );
+    res.json(workoutUpdated);
+  } catch (error) {
+    res.json(error);
+  }
 }
 
 module.exports = {
