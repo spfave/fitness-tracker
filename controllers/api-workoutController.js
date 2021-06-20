@@ -14,7 +14,13 @@ async function getWorkouts(req, res) {
 // Return workouts in range
 async function getRangeWorkouts(req, res) {
   try {
-    const workouts = await Workout.find({}).sort({ day: -1 }).limit(7);
+    // const workouts = await Workout.find({}).sort({ day: -1 }).limit(7);
+    const workouts = await Workout.aggregate([
+      { $addFields: { totalDuration: { $sum: '$exercises.duration' } } },
+    ]);
+    // const workouts = await Workout.aggregate.addFields({
+    //   totalDuration: { $sum: {} },
+    // });
     res.json(workouts);
   } catch (error) {
     res.json(error);
