@@ -1,18 +1,14 @@
 const { Exercise, Workout } = require('../models');
 
 // Return list of workouts
-function getWorkouts(req, res) {
-  res.json([0, 1, 2, 3, 4]);
-}
-
-// Add exercise to workout
-function addWorkoutExercise(req, res) {
-  res.json(1);
-}
-
-// Add new workout
-function addWorkout(req, res) {
-  res.json(2);
+async function getWorkouts(req, res) {
+  try {
+    const workouts = await Workout.find({}).exec();
+    res.json(workouts);
+  } catch (error) {
+    res.json(error);
+  }
+  // res.json([]); // TESTING
 }
 
 // Return workouts in range
@@ -20,9 +16,19 @@ function getRangeWorkouts(req, res) {
   res.json([2, 3]);
 }
 
+// Add new workout
+function addWorkout(req, res) {
+  res.json(2);
+}
+
+// Add exercise to workout
+function addWorkoutExercise(req, res) {
+  res.json(1);
+}
+
 module.exports = {
   getWorkouts,
-  addWorkoutExercise,
-  addWorkout,
   getRangeWorkouts,
+  addWorkout,
+  addWorkoutExercise,
 };
