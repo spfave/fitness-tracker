@@ -140,6 +140,10 @@ form::after {
   display: none !important;
 }
 
+.anchor-disable {
+  pointer-events: none;
+}
+
 .exercise .ui.card {
   width: 400px;
   max-width: 600px;
