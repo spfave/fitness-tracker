@@ -26,9 +26,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // Database connection
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workoutDB', {
-//   useNewUrlParser: true,
-// });
+mongoose
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/workoutDB', {
+    useNewUrlParser: true,
+  })
+  .then(() => console.log('MongoDB connected'));
 
 // Start server
 app.listen(PORT, () => console.log(`App running on port ${PORT}!`));
