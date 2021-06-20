@@ -12,8 +12,13 @@ async function getWorkouts(req, res) {
 }
 
 // Return workouts in range
-function getRangeWorkouts(req, res) {
-  res.json([2, 3]);
+async function getRangeWorkouts(req, res) {
+  try {
+    const workouts = await Workout.find({}).sort({ day: -1 }).limit(7);
+    res.json(workouts);
+  } catch (error) {
+    res.json(error);
+  }
 }
 
 // Add new workout
