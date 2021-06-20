@@ -1,4 +1,4 @@
-const { Exercise, Workout } = require('../models');
+const { Workout } = require('../models');
 
 // Return list of workouts
 async function getWorkouts(req, res) {
@@ -17,8 +17,13 @@ function getRangeWorkouts(req, res) {
 }
 
 // Add new workout
-function addWorkout(req, res) {
-  res.json(2);
+async function addWorkout(req, res) {
+  try {
+    const workout = await new Workout().save();
+    res.json(workout);
+  } catch (error) {
+    res.json(error);
+  }
 }
 
 // Add exercise to workout
