@@ -3,7 +3,7 @@ const { Workout } = require('../models');
 // Return list of workouts
 async function getWorkouts(req, res) {
   try {
-    const workouts = await Workout.find({}).exec();
+    const workouts = await Workout.find({}).sort({ day: 1 }).exec();
     res.json(workouts);
   } catch (error) {
     res.json(error);
