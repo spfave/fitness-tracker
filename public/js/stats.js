@@ -64,9 +64,11 @@ function populateChart(data) {
     },
     options: {
       responsive: true,
-      title: {
-        display: true,
-        text: 'Time Spent Working Out (Last 7 days)',
+      plugins: {
+        title: {
+          display: true,
+          text: 'Time Spent Working Out (Last 7 days)',
+        },
       },
       scales: {
         y: {
@@ -105,9 +107,11 @@ function populateChart(data) {
       ],
     },
     options: {
-      title: {
-        display: true,
-        text: 'Pounds Lifted (Last 7 days)',
+      plugins: {
+        title: {
+          display: true,
+          text: 'Weight Lifted (Last 7 days)',
+        },
       },
       scales: {
         yAxes: [
@@ -127,21 +131,24 @@ function populateChart(data) {
       labels: ['Resistance', 'Cardio'],
       datasets: [
         {
-          label: 'label',
           data: countExercise,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
           ],
+          borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
         },
       ],
     },
     options: {
       responsive: true,
-      title: {
-        display: true,
-        text: 'Exercise Percent Resistance vs Cardio',
+      plugins: {
+        title: {
+          display: true,
+          text: 'Exercise Percent Resistance vs Cardio',
+        },
       },
+      radius: '80%',
     },
   });
 }
