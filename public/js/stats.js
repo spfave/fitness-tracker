@@ -69,9 +69,11 @@ function populateChart(data) {
           display: true,
           text: 'Time Spent Working Out (Last 7 days)',
         },
+        legend: { display: false },
       },
       scales: {
         y: {
+          title: { display: true, text: 'Minutes' },
           beginAtZero: true,
         },
       },
@@ -112,15 +114,13 @@ function populateChart(data) {
           display: true,
           text: 'Weight Lifted (Last 7 days)',
         },
+        legend: { display: false },
       },
       scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
+        y: {
+          title: { display: true, text: 'Pounds' },
+          beginAtZero: true,
+        },
       },
     },
   });
@@ -145,8 +145,9 @@ function populateChart(data) {
       plugins: {
         title: {
           display: true,
-          text: 'Exercise Percent Resistance vs Cardio',
+          text: 'Resistance vs Cardio Exercises (Last 7 days)',
         },
+        legend: { position: 'bottom' },
       },
       radius: '80%',
     },
