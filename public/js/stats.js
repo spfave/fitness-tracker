@@ -15,12 +15,27 @@ function calculateTotalWeight(data) {
   return totals;
 }
 
+function countResistanceCardio(data) {
+  const exerciseType = [0, 0];
+
+  for (const workout of data) {
+    for (const { type } of workout.exercises) {
+      if (type === 'resistance') exerciseType[0]++;
+      else exerciseType[1]++;
+    }
+  }
+
+  return exerciseType;
+}
+
 function populateChart(data) {
   const durations = data.map(({ totalDuration }) => totalDuration);
   const pounds = calculateTotalWeight(data);
+  const countExercise = countResistanceCardio(data);
 
   const line = document.querySelector('#canvas').getContext('2d');
   const bar = document.querySelector('#canvas2').getContext('2d');
+  const donut = document.querySelector('#canvas3').getContext('2d');
 
   const labels = data.map(({ day }) => {
     const date = new Date(day);
@@ -102,6 +117,30 @@ function populateChart(data) {
             },
           },
         ],
+      },
+    },
+  });
+
+  let donutChart = new Chart(donut, {
+    type: 'doughnut',
+    data: {
+      labels: ['Resistance', 'Cardio'],
+      datasets: [
+        {
+          label: 'label',
+          data: countExercise,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Exercise Percent Resistance vs Cardio',
       },
     },
   });
