@@ -29,7 +29,7 @@ The web application is hosted on Heroku for demonstration.
 ![app home page](./assets/img/app-home.png)
 ![app dashboard](./assets/img/app-dashboard.png)
 ![app create new workout](./assets/img/app-new-workout.gif)
-![app continue last workout](./assets/img/app-continue-workout)
+![app continue last workout](./assets/img/app-continue-workout.gif)
 
 
 &nbsp;
